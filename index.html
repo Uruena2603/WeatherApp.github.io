@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="/styles/style.css">
+
+    <!-- Icono de la pestaña del navegador -->
+    <link rel="icon" href="/images/iconos/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/iconos/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/iconos/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/iconos/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/iconos/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/images/iconos/android-chrome-512x512.png">
+
+</head>
+<body>
+    
+    <div class="card">
+        <div class="search">
+            <input type="text" placeholder="Enter City Name" spellcheck="false">
+            <button><img src="/images/search.png"></button>
+        </div>
+        <div class="error">
+            <p>Invalid City Name</p>
+        </div>
+        <div class="weather">
+            <img class="weather-icon">
+            <h1 class="temp"></h1>
+            <h2 class="city"></h2>
+            <div class="details">
+                <div class="col">
+                    <img src="/images/humidity.png">
+                    <div>
+                        <p class="humidity"></p>
+                        <p>Humidity</p>
+                    </div>
+                </div>    
+                <div class="col">
+                    <img src="/images/wind.png">
+                    <div>
+                        <p class="wind"></p>
+                        <p>Wind Speed</p>
+                    </div>
+                </div>
+            </div>
+            <div class="maxMinTemp">
+                <p>Min</p>
+                <h3 class="minTemp"></h3>
+                <p>Max</p>
+                <h3 class="maxTemp"></h3>
+            </div>
+        </div>
+    </div>
+
+<!-- Script para interactuar con la API del clima -->
+    <script>
+        // Definición de la clave de API y la URL de la API
+        const apiKey = "de8f320c810f538cec6e643a0717fb46";
+        const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+
+        // Selección de elementos del DOM para interacción
+        const searchBox = document.querySelector(".search input");
+        const searchBtn = document.querySelector(".search button");
+        const weatherIcon = document.querySelector(".weather-icon");
+
+        // Función asincrónica para verificar y mostrar el clima de una ciudad
+        async function checkWeather(city) {
+            const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+
+            if (response.status == 404) {
+                // Muestra el mensaje de error si la ciudad no es válida
+                document.querySelector(".error").style.display = "block";
+                document.querySelector(".weather").style.display = "none";
+            } else {
+                // Parsea los datos de la respuesta y actualiza la interfaz
+                var data = await response.json();
+
+                console.log(data);
+
+                document.querySelector(".city").innerHTML = data.name;
+                document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°C";
+                document.querySelector(".minTemp").innerHTML = Math.round(data.main.temp_min) + "°C";
+                document.querySelector(".maxTemp").innerHTML = Math.round(data.main.temp_max) + "°C";
+                document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
+                document.querySelector(".wind").innerHTML = data.wind.speed + " km/h";
+
+                // Asigna el ícono del clima según la condición meteorológica
+                if (data.weather[0].main == "Clouds") {
+                    weatherIcon.src = "../images/clouds.png";
+                } else if (data.weather[0].main == "Clear") {
+                    weatherIcon.src = "../images/clear.png";
+                } else if (data.weather[0].main == "Rain") {
+                    weatherIcon.src = "../images/rain.png";
+                } else if (data.weather[0].main == "Drizzle") {
+                    weatherIcon.src = "../images/drizzle.png";
+                } else if (data.weather[0].main == "Mist") {
+                    weatherIcon.src = "../images/mist.png";
+                } else if (data.weather[0].main == "Snow") {
+                    weatherIcon.src = "../images/snow.png";
+                }
+
+                // Muestra la sección del clima y oculta el mensaje de error
+                document.querySelector(".weather").style.display = "block";
+                document.querySelector(".error").style.display = "none";
+            }
+        }
+
+        // Evento de clic en el botón de búsqueda para obtener el clima
+        searchBtn.addEventListener("click", () => {
+            checkWeather(searchBox.value);
+        });
+    </script>
+
+</body>
+</html>

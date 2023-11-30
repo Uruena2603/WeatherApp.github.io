@@ -1,0 +1,137 @@
+/* Estilo global para resetear márgenes, rellenos y utilizar la fuente Poppins */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+/* Estilo del cuerpo de la página */
+body {
+    background: #222; 
+}
+
+/* Estilo del contenedor principal con diseño de tarjeta */
+.card {
+    width: 90%;
+    max-width: 500px;
+    background: linear-gradient(135deg, #fe7b00, #5b548a); /* Degradado de colores */
+    color: #fff; 
+    margin: 100px auto 0;
+    border-radius: 20px;
+    padding: 40px 35px;
+    text-align: center;
+    margin-bottom: 50px;
+    margin-top: 40px;
+}
+
+/* Estilo del área de búsqueda */
+.search {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Estilo del campo de entrada de texto en la búsqueda */
+.search input {
+    border: 0;
+    outline: 0;
+    background: #ebfffc; 
+    color: #555; 
+    padding: 10px 25px;
+    height: 60px;
+    border-radius: 30px;
+    flex: 1;
+    margin-right: 16px;
+    font-size: 18px;
+}
+
+/* Estilo del botón de búsqueda */
+.search button {
+    border: 0;
+    outline: 0;
+    background: #ebfffc; 
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+
+/* Estilo de la imagen dentro del botón de búsqueda */
+.search button img {
+    width: 18px;
+}
+
+/* Estilo del icono del clima */
+.weather-icon {
+    width: 170px;
+    margin-top: 30px;
+}
+
+/* Estilo del título de temperatura */
+.weather h1 {
+    font-size: 80px;
+    font-weight: 500;
+}
+
+/* Estilo del subtítulo de la ciudad */
+.weather h2 {
+    font-size: 45px;
+    font-weight: 400;
+    margin-top: -10px;
+}
+
+/* Estilo del área de detalles como humedad y velocidad del viento */
+.details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin-top: 50px;
+}
+
+/* Estilo de la columna en los detalles climáticos */
+.col {
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+/* Estilo de la imagen dentro de la columna */
+.col img {
+    width: 40px;
+    margin-right: 10px;
+}
+
+/* Estilo de la fuente de humedad y velocidad del viento */
+.humidity, .wind {
+    font-size: 28px;
+    margin-top: -6px;
+}
+
+/* Estilo de la sección de temperatura mínima y máxima */
+.maxMinTemp {
+    display: flex;
+    justify-content: space-evenly; 
+    margin-top: 35px;
+}
+
+/* Estilo de la fuente de temperatura mínima y máxima */
+.minTemp, .maxTemp {
+    font-size: 18px;
+}
+
+/* Estilo para ocultar la sección del clima por defecto */
+.weather {
+    display: none;
+}
+
+/* Estilo para mensajes de error */
+.error {
+    text-align: left;
+    margin-left: 10px;
+    font-size: 14px;
+    margin-top: 10px;
+    display: none;
+}

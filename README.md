@@ -47,4 +47,5 @@ Esta aplicación utiliza la API gratuita de [OpenWeatherMap](https://openweather
 
 ## Vista Previa de la Aplicación
 
-![Weather App](https://github.com/Uruena2603/WeatherApp.github.io/assets/150274418/073dc034-4678-48e2-bcd9-88ca16e46963)
+![image](https://github.com/Uruena2603/WeatherApp.github.io/assets/150274418/7baad69a-40b5-4e58-9195-53c3153bca36)
+

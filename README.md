@@ -47,4 +47,4 @@ Esta aplicación utiliza la API gratuita de [OpenWeatherMap](https://openweather
 
 ## Vista Previa de la Aplicación
 
-
+![Weather App](WeatherApp.png)
